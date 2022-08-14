@@ -12,21 +12,21 @@ print("\n yt2mp3 is a simple python application that uses pytube and moviepy to 
 
 ytlink = input("Please paste the link to the youtube playlist you want to download music from: ")
 playlist = Playlist(ytlink)
-#pritn vid url
+#print vid url
 playlist.video_urls
 
 for url in playlist:
     print(url)
 
-#pritn address of yt object in playlist
+#print address of yt object in playlist
 
 for vid in playlist.videos:
     print(vid)
 
-for url in playlist:
-    YouTube(url).streams.filter(only_audio=True).first().download('/Users/nickk/Desktop/music')
-
 folder = "/Users/nickk/Desktop/music"
+
+for url in playlist:
+    YouTube(url).streams.filter(only_audio=True).first().download(folder)
 
 for file in os.listdir(folder):
     if re.search('mp4', file):
